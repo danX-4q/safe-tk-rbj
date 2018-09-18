@@ -7,7 +7,7 @@ import shlex
 import json
 import sys
 
-VERSION="0.1"
+VERSION="0.2"
 
 CMD_GETINFO="/root/safe_v2.0.0_linux/safe-cli getinfo"
 CMD_GETTIPS="/root/safe_v2.0.0_linux/safe-cli getchaintips"
@@ -44,7 +44,7 @@ def check(getinfo_result, gettips_result) : #return (bool, block_hash)
     if t['status'] != 'invalid' :
         return (False, None)
     height = t['height']
-    eq = (blocks + 1) == height
+    eq = (blocks + 1) <= height
     block_hash = t['hash']
     return (eq, block_hash)
 
